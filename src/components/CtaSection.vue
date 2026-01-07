@@ -18,8 +18,8 @@ const gradientStyle = computed(() => ({
       <h2 class="text-3xl font-bold mb-4">
         Pronto para organizar sua operação?
       </h2>
-      <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-        Agende uma demonstração e veja como o OwnerPro Business pode transformar a gestão dos seus imóveis por temporada.
+      <p class="text-lg opacity-90 mb-8">
+        Veja na prática como funciona.
       </p>
 
       <a

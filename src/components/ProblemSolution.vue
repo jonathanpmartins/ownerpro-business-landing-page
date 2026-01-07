@@ -5,19 +5,21 @@ const primaryColor = inject('primaryColor')
 const accentOnPrimary = inject('accentOnPrimary')
 
 const problems = [
-  'Planilhas complexas para calcular repasses de proprietários',
-  'Falta de visão clara do financeiro da empresa',
-  'Erros manuais que geram retrabalho e desconfiança',
-  'Dificuldade em escalar a operação sem perder o controle',
-  'Prestação de contas desorganizada para proprietários',
+  'Repasses em planilhas',
+  'Sem visão financeira',
+  'Erros manuais',
+  'Difícil controle de escala',
+  'Prestação de contas confusa',
+  'Operação via WhatsApp',
 ]
 
 const solutions = [
-  'Cálculo automático de repasses com regras personalizadas',
-  'DRE, fluxo de caixa e visão consolidada do negócio',
-  'Integração com channel manager elimina erros',
-  'Estrutura que sustenta o crescimento da operação',
-  'Prestação de contas clara e profissional',
+  'Repasses automáticos',
+  'Visão financeira completa',
+  'Sem erros manuais',
+  'Escala com controle',
+  'Prestação de contas clara',
+  'Operação centralizada',
 ]
 </script>
 
