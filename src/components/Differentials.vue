@@ -12,21 +12,21 @@ const differentials = [
 </script>
 
 <template>
-  <section 
-    id="diferenciais" 
+  <section
+    id="diferenciais"
     class="py-20"
     :style="{ backgroundColor: primaryColor }"
   >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-white mb-4">Por que a OwnerPro?</h2>
+        <h2 class="text-3xl font-bold text-white mb-4">Por que o OwnerPro Business?</h2>
         <p class="text-white/80 max-w-2xl mx-auto">
           Mais do que um software, é um processo de organização e amadurecimento da sua operação.
         </p>
       </div>
-      
+
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div 
+        <div
           v-for="(item, i) in differentials"
           :key="i"
           class="bg-white/10 backdrop-blur rounded-lg p-6 text-center text-white"

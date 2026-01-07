@@ -30,7 +30,7 @@ const solutions = [
             Você conhece esses problemas?
           </h2>
           <div class="space-y-4">
-            <div 
+            <div
               v-for="(problem, i) in problems"
               :key="i"
               class="flex items-start gap-3"
@@ -44,14 +44,14 @@ const solutions = [
             </div>
           </div>
         </div>
-        
-        <div 
+
+        <div
           class="p-8 rounded-lg text-white"
           :style="{ backgroundColor: primaryColor }"
         >
-          <h3 class="text-2xl font-bold mb-6">A OwnerPro resolve isso</h3>
+          <h3 class="text-2xl font-bold mb-6">OwnerPro Business resolve isso</h3>
           <div class="space-y-4">
-            <div 
+            <div
               v-for="(solution, i) in solutions"
               :key="i"
               class="flex items-start gap-3"

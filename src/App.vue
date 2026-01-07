@@ -13,8 +13,8 @@ import FooterSection from './components/FooterSection.vue'
 import ColorPicker from './components/ColorPicker.vue'
 
 // Cores do tema - ajuste aqui as cores finais escolhidas
-const primaryColor = ref('#27555A')
-const secondaryColor = ref('#D97706')
+const primaryColor = ref('#0D5C63')
+const secondaryColor = ref('#E8930A')
 
 // Disponibiliza as cores para todos os componentes filhos
 provide('primaryColor', primaryColor)
@@ -39,13 +39,13 @@ provide('darkenColor', darkenColor)
 <template>
   <div class="min-h-screen bg-gray-50 font-sans">
     <!-- Color Picker - remover em produção -->
-    <ColorPicker 
+    <ColorPicker
       v-if="showColorPicker"
       v-model:primary="primaryColor"
       v-model:secondary="secondaryColor"
       @close="showColorPicker = false"
     />
-    
+
     <button
       v-if="!showColorPicker"
       @click="showColorPicker = true"

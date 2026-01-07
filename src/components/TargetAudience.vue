@@ -10,12 +10,12 @@ const targetAudience = [
   <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Para quem é a OwnerPro?</h2>
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Para quem é o OwnerPro Business?</h2>
         <p class="text-gray-600">Ideal para operações que buscam profissionalizar a gestão</p>
       </div>
-      
+
       <div class="grid md:grid-cols-3 gap-6">
-        <div 
+        <div
           v-for="(item, i) in targetAudience"
           :key="i"
           class="text-center p-6 rounded-lg border border-gray-100 hover:border-gray-200 hover:shadow-sm transition"

@@ -10,7 +10,7 @@ const gradientStyle = computed(() => ({
 </script>
 
 <template>
-  <section 
+  <section
     class="py-20 text-white"
     :style="gradientStyle"
   >
@@ -19,11 +19,11 @@ const gradientStyle = computed(() => ({
         Pronto para organizar sua operação?
       </h2>
       <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-        Agende uma demonstração e veja como a OwnerPro pode transformar a gestão dos seus imóveis por temporada.
+        Agende uma demonstração e veja como o OwnerPro Business pode transformar a gestão dos seus imóveis por temporada.
       </p>
-      
+
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
+        <a
           href="https://wa.me/5554991864582"
           target="_blank"
           class="inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded font-semibold shadow-lg hover:shadow-xl transition"
@@ -34,8 +34,8 @@ const gradientStyle = computed(() => ({
           </svg>
           Agendar Demonstração
         </a>
-        
-        <a 
+
+        <a
           href="mailto:daniele@rosa.imb.br"
           class="inline-flex items-center justify-center gap-2 border-2 border-white/30 px-8 py-4 rounded font-semibold hover:bg-white/10 transition"
         >
