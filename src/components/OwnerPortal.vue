@@ -114,16 +114,18 @@ onUnmounted(() => {
             <div class="bg-white rounded overflow-hidden">
               <!-- Carousel Container -->
               <div class="relative">
-                <!-- Slides -->
-                <transition name="fade" mode="out-in">
+                <!-- Slides - todas as imagens permanecem no DOM -->
+                <div class="relative">
                   <img
-                    :key="currentSlide"
-                    :src="screenshots[currentSlide].src"
-                    :alt="screenshots[currentSlide].alt"
-                    class="w-full h-auto block cursor-pointer"
+                    v-for="(screenshot, index) in screenshots"
+                    :key="index"
+                    :src="screenshot.src"
+                    :alt="screenshot.alt"
+                    class="w-full h-auto cursor-pointer transition-opacity duration-400"
+                    :class="index === currentSlide ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'"
                     @click="openLightbox"
                   />
-                </transition>
+                </div>
 
                 <!-- Navigation Arrows -->
                 <button
@@ -218,14 +220,8 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.duration-400 {
+  transition-duration: 400ms;
 }
 
 .lightbox-enter-active,
