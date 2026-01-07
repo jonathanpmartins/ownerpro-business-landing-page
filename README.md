@@ -94,30 +94,45 @@ ownerpro-business/
 └── postcss.config.js
 ```
 
-## 🌐 Deploy
+## Deploy
 
-### Opção 1: Servidor estático simples
+**Produção**: https://business.ownerpro.com.br
+
+A landing page é hospedada na AWS usando **S3 + CloudFront**.
+
+### Deploy Automático (CI/CD)
+
+O deploy é feito automaticamente via GitHub Actions quando você faz push para a branch `main`.
+
+**Configuração necessária** (GitHub → Settings → Secrets → Actions):
+
+| Secret | Descrição |
+|--------|-----------|
+| `AWS_ACCESS_KEY_ID` | Chave de acesso do usuário IAM |
+| `AWS_SECRET_ACCESS_KEY` | Chave secreta do usuário IAM |
+| `CLOUDFRONT_DISTRIBUTION_ID` | ID da distribuição CloudFront |
+
+### Deploy Manual
+
+Para deploy manual, use o script `deploy.sh`:
+
 ```bash
-npm run build
-# Upload da pasta dist/ para o servidor via FTP/SFTP
+# Configure o ID do CloudFront (apenas uma vez)
+export CLOUDFRONT_DISTRIBUTION_ID=seu-id-aqui
+
+# Execute o deploy
+chmod +x deploy.sh  # primeira vez
+./deploy.sh
 ```
 
-### Opção 2: Nginx
-```nginx
-server {
-    listen 80;
-    server_name business.ownerpro.com.br;
-    root /var/www/ownerpro-business/dist;
-    index index.html;
+### Infraestrutura AWS
 
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-### Opção 3: Vercel/Netlify
-Apenas conecte o repositório Git - o build é automático.
+| Recurso | Nome/ID |
+|---------|---------|
+| Bucket S3 | `ownerpro-business-landing-page` |
+| Região | `sa-east-1` (São Paulo) |
+| CloudFront | Configurado com HTTPS |
+| Certificado SSL | ACM (us-east-1) |
 
 ## ✏️ Edições Comuns
 
