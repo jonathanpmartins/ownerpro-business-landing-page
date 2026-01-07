@@ -96,7 +96,7 @@ ownerpro-business/
 
 ## Deploy
 
-**Produção**: https://business.ownerpro.com.br
+**Produção**: https://ownerprobusiness.com.br
 
 A landing page é hospedada na AWS usando **S3 + CloudFront**.
 

@@ -38,4 +38,4 @@ aws cloudfront create-invalidation \
 
 echo ""
 echo "=== Deploy concluído! ==="
-echo "URL: https://business.ownerpro.com.br"
+echo "URL: https://ownerprobusiness.com.br"
