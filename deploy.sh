@@ -8,7 +8,7 @@ set -e
 # Configurações
 BUCKET_NAME="ownerpro-business-landing-page"
 REGION="sa-east-1"
-AWS_PROFILE="ownerpro"
+AWS_PROFILE="ownerpro-business-deploy"
 CLOUDFRONT_DISTRIBUTION_ID="E2NOHZ7D65MMCS"
 
 echo "=== OwnerPro Business Deploy ==="
