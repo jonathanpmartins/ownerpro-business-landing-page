@@ -54,9 +54,12 @@
     }
     </script>
 
+    <!-- Preconnect external domains -->
+    <link rel="preconnect" href="https://wa.me" />
+
     <!-- Preload fonts -->
-    <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams.woff" crossorigin />
-    <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams_Bold.woff" crossorigin />
+    <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams.woff" crossorigin fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams_Bold.woff" crossorigin fetchpriority="high" />
 
     <!-- Preload carousel images -->
     <link rel="preload" as="image" href="/screenshots/portal-1-960.webp" />
