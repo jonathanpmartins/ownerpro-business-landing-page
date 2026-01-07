@@ -22,6 +22,7 @@ const tagColorOptions = [
   { name: 'Teal', bg: '#e0f2f1', text: '#24847f' },
   { name: 'Azul', bg: '#e3f2fd', text: '#1565c0' },
   { name: 'Âmbar', bg: '#fff8e1', text: '#f57f17' },
+  { name: 'Primária', bg: null, text: null },
   { name: 'Secundária', bg: null, text: null },
   { name: 'Custom', bg: null, text: null },
 ]
@@ -31,6 +32,10 @@ const customTagColor = ref('#6366f1')
 // Cor dos ícones sobre fundo primário (checks, etc)
 const accentOnPrimaryOptions = ['Branco', 'Secundária']
 const selectedAccentOnPrimary = ref(0) // 0 = Branco, 1 = Secundária
+
+// Cor dos boxes de ícones (seção Funcionalidades)
+const iconBoxColorOptions = ['Primária', 'Secundária']
+const selectedIconBoxColor = ref(0) // 0 = Primária, 1 = Secundária
 
 // Função para clarear uma cor
 const lightenColor = (hex, percent = 85) => {
@@ -44,6 +49,9 @@ const lightenColor = (hex, percent = 85) => {
 // Cor da tag computada
 const tagColor = computed(() => {
   const option = tagColorOptions[selectedTagColor.value]
+  if (option.name === 'Primária') {
+    return { bg: primaryColor.value + '20', text: primaryColor.value }
+  }
   if (option.name === 'Secundária') {
     return { bg: secondaryColor.value + '20', text: secondaryColor.value }
   }
@@ -58,11 +66,17 @@ const accentOnPrimary = computed(() => {
   return selectedAccentOnPrimary.value === 0 ? 'rgba(255,255,255,0.9)' : secondaryColor.value
 })
 
+// Cor dos boxes de ícones
+const iconBoxColor = computed(() => {
+  return selectedIconBoxColor.value === 0 ? primaryColor.value : secondaryColor.value
+})
+
 // Disponibiliza as cores para todos os componentes filhos
 provide('primaryColor', primaryColor)
 provide('secondaryColor', secondaryColor)
 provide('tagColor', tagColor)
 provide('accentOnPrimary', accentOnPrimary)
+provide('iconBoxColor', iconBoxColor)
 
 // Controle do color picker - ativado via ?colors=view na URL
 const urlParams = new URLSearchParams(window.location.search)
@@ -91,8 +105,10 @@ provide('darkenColor', darkenColor)
       v-model:selectedTag="selectedTagColor"
       v-model:customTagColor="customTagColor"
       v-model:selectedAccent="selectedAccentOnPrimary"
+      v-model:selectedIconBox="selectedIconBoxColor"
       :tagColorOptions="tagColorOptions"
       :accentOnPrimaryOptions="accentOnPrimaryOptions"
+      :iconBoxColorOptions="iconBoxColorOptions"
       :lightenColor="lightenColor"
       @close="showColorPicker = false"
     />

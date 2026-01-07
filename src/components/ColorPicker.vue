@@ -9,10 +9,12 @@ const props = defineProps({
   tagColorOptions: Array,
   selectedAccent: Number,
   accentOnPrimaryOptions: Array,
+  selectedIconBox: Number,
+  iconBoxColorOptions: Array,
   lightenColor: Function
 })
 
-const emit = defineEmits(['update:primary', 'update:secondary', 'update:selectedTag', 'update:customTagColor', 'update:selectedAccent', 'close'])
+const emit = defineEmits(['update:primary', 'update:secondary', 'update:selectedTag', 'update:customTagColor', 'update:selectedAccent', 'update:selectedIconBox', 'close'])
 
 // Paletas pré-definidas
 const palettes = [
@@ -71,7 +73,7 @@ const selectedSecondaryName = () => secondaryColors.find(c => c.hex === props.se
 </script>
 
 <template>
-  <div class="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-2xl border border-gray-200 p-3 w-80 max-h-[90vh] overflow-y-auto">
+  <div class="fixed top-4 right-4 z-50 bg-white rounded-lg shadow-2xl border border-gray-200 p-3 w-72 max-h-[90vh] overflow-y-auto">
     <div class="flex justify-between items-center mb-3">
       <h3 class="font-semibold text-gray-800 text-sm">🎨 Cores</h3>
       <button
@@ -160,25 +162,93 @@ const selectedSecondaryName = () => secondaryColors.find(c => c.hex === props.se
       </div>
     </div>
 
-    <!-- Cor das Tags -->
+    <!-- Ícones sobre fundo primário -->
     <div class="mb-3 pt-3 border-t border-gray-200">
+      <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Checks/Ícones</label>
+      <div class="flex gap-1 mt-1">
+        <button
+          v-for="(option, i) in accentOnPrimaryOptions"
+          :key="option"
+          @click="emit('update:selectedAccent', i)"
+          class="flex-1 px-2 py-1.5 rounded text-xs font-medium transition border flex items-center justify-center gap-1"
+          :class="selectedAccent === i ? 'border-gray-800' : 'border-gray-200'"
+          :style="{ backgroundColor: primary }"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            :style="{ color: i === 0 ? 'rgba(255,255,255,0.9)' : secondary }">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span :style="{ color: i === 0 ? 'rgba(255,255,255,0.9)' : secondary }">{{ option }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Boxes de Ícones (Funcionalidades) -->
+    <div class="mb-3">
+      <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Boxes de Ícones</label>
+      <div class="flex gap-1 mt-1">
+        <button
+          v-for="(option, i) in iconBoxColorOptions"
+          :key="option"
+          @click="emit('update:selectedIconBox', i)"
+          class="flex-1 px-2 py-1.5 rounded text-xs font-medium transition border flex items-center justify-center gap-1"
+          :class="selectedIconBox === i ? 'border-gray-800' : 'border-gray-200'"
+          :style="{ backgroundColor: i === 0 ? primary : secondary }"
+        >
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-white">{{ option }}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cor das Tags -->
+    <div class="mb-3">
       <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Tags</label>
+      <!-- Cores pré-definidas -->
       <div class="flex flex-wrap gap-1 mt-1">
         <button
-          v-for="(option, i) in tagColorOptions.filter(o => o.name !== 'Custom')"
+          v-for="option in tagColorOptions.filter(o => !['Primária', 'Secundária', 'Custom'].includes(o.name))"
           :key="option.name"
           @click="emit('update:selectedTag', tagColorOptions.findIndex(o => o.name === option.name))"
           class="px-2 py-1 rounded text-xs font-medium transition border"
           :style="{
-            backgroundColor: option.bg || (secondary + '20'),
-            color: option.text || secondary,
-            borderColor: tagColorOptions[selectedTag]?.name === option.name ? (option.text || secondary) : 'transparent'
+            backgroundColor: option.bg,
+            color: option.text,
+            borderColor: tagColorOptions[selectedTag]?.name === option.name ? option.text : 'transparent'
           }"
         >
           {{ option.name }}
         </button>
       </div>
-      <div class="flex items-center gap-1 mt-2">
+      <!-- Primária e Secundária -->
+      <div class="flex gap-1 mt-1">
+        <button
+          @click="emit('update:selectedTag', tagColorOptions.findIndex(o => o.name === 'Primária'))"
+          class="px-2 py-1 rounded text-xs font-medium transition border"
+          :style="{
+            backgroundColor: primary + '20',
+            color: primary,
+            borderColor: tagColorOptions[selectedTag]?.name === 'Primária' ? primary : 'transparent'
+          }"
+        >
+          Primária
+        </button>
+        <button
+          @click="emit('update:selectedTag', tagColorOptions.findIndex(o => o.name === 'Secundária'))"
+          class="px-2 py-1 rounded text-xs font-medium transition border"
+          :style="{
+            backgroundColor: secondary + '20',
+            color: secondary,
+            borderColor: tagColorOptions[selectedTag]?.name === 'Secundária' ? secondary : 'transparent'
+          }"
+        >
+          Secundária
+        </button>
+      </div>
+      <!-- Custom -->
+      <div class="flex items-center gap-1 mt-1">
         <input
           type="color"
           :value="customTagColor"
@@ -197,27 +267,6 @@ const selectedSecondaryName = () => secondaryColors.find(c => c.hex === props.se
           Custom
         </button>
         <code class="bg-gray-100 px-1 rounded text-xs">{{ customTagColor }}</code>
-      </div>
-    </div>
-
-    <!-- Ícones sobre fundo primário -->
-    <div class="mb-3">
-      <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Checks/Ícones</label>
-      <div class="flex gap-1 mt-1">
-        <button
-          v-for="(option, i) in accentOnPrimaryOptions"
-          :key="option"
-          @click="emit('update:selectedAccent', i)"
-          class="flex-1 px-2 py-1.5 rounded text-xs font-medium transition border flex items-center justify-center gap-1"
-          :class="selectedAccent === i ? 'border-gray-800' : 'border-gray-200'"
-          :style="{ backgroundColor: primary }"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            :style="{ color: i === 0 ? 'rgba(255,255,255,0.9)' : secondary }">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-          <span :style="{ color: i === 0 ? 'rgba(255,255,255,0.9)' : secondary }">{{ option }}</span>
-        </button>
       </div>
     </div>
 
