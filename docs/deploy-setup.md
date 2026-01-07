@@ -2,7 +2,7 @@
 
 Este documento descreve o passo a passo para configurar a infraestrutura de hospedagem da landing page OwnerPro Business.
 
-**URL final**: https://ownerprobusiness.com.br
+**URL final**: https://business.ownerpro.com.br
 
 ---
 
@@ -71,7 +71,7 @@ export AWS_PROFILE=ownerpro
 2. Clique em **Request a certificate**
 3. Selecione **Request a public certificate** → Next
 4. Configure:
-   - **Domain name**: `ownerprobusiness.com.br`
+   - **Domain name**: `business.ownerpro.com.br`
    - **Validation method**: DNS validation
 5. Clique em **Request**
 6. Na lista de certificados, clique no certificado criado
@@ -83,11 +83,11 @@ export AWS_PROFILE=ownerpro
 ## Passo 3: Validar Certificado no Registro.br
 
 1. Acesse o [Registro.br](https://registro.br)
-2. Vá em **Meus domínios** → `ownerprobusiness.com.br` → **DNS**
+2. Vá em **Meus domínios** → `business.ownerpro.com.br` → **DNS**
 3. Adicione um novo registro:
    - **Tipo**: CNAME
    - **Nome**: Cole o CNAME name do ACM (sem o domínio final)
-     - Exemplo: Se o ACM mostrar `_abc123.ownerprobusiness.com.br`, use apenas `_abc123`
+     - Exemplo: Se o ACM mostrar `_abc123.business.ownerpro.com.br`, use apenas `_abc123`
    - **Valor**: Cole o CNAME value do ACM
 4. Salve e aguarde a propagação (pode levar alguns minutos)
 5. Volte ao ACM e verifique se o status mudou para **Issued** (Emitido)
@@ -112,7 +112,7 @@ export AWS_PROFILE=ownerpro
    - **Cache policy**: CachingOptimized (recomendado)
 5. Configure **Settings**:
    - **Price class**: Use only North America and Europe (mais barato) ou All edge locations
-   - **Alternate domain name (CNAME)**: `ownerprobusiness.com.br`
+   - **Alternate domain name (CNAME)**: `business.ownerpro.com.br`
    - **Custom SSL certificate**: Selecione o certificado criado no Passo 2
    - **Default root object**: `index.html`
 6. Clique em **Create distribution**
@@ -178,7 +178,7 @@ export AWS_PROFILE=ownerpro
 
 1. Copie o **Distribution domain name** do CloudFront (ex: `d1abc2xyz3.cloudfront.net`)
 2. Acesse o [Registro.br](https://registro.br)
-3. Vá em **Meus domínios** → `ownerprobusiness.com.br` → **DNS**
+3. Vá em **Meus domínios** → `business.ownerpro.com.br` → **DNS**
 4. Adicione um novo registro:
    - **Tipo**: CNAME
    - **Nome**: `@` (ou deixe vazio para o domínio raiz)
@@ -289,7 +289,7 @@ chmod +x deploy.sh  # primeira vez
 
 Após o deploy, verifique:
 
-1. [ ] Acesse https://ownerprobusiness.com.br
+1. [ ] Acesse https://business.ownerpro.com.br
 2. [ ] Verifique se o certificado SSL está válido (cadeado verde)
 3. [ ] Teste a navegação pelo site
 4. [ ] Verifique se o GitHub Actions executou com sucesso
@@ -324,6 +324,6 @@ Após o deploy, verifique:
 |---------|-------|
 | Bucket S3 | `ownerpro-business-landing-page` |
 | Região S3 | `sa-east-1` |
-| Domínio | `ownerprobusiness.com.br` |
+| Domínio | `business.ownerpro.com.br` |
 | CloudFront Distribution ID | _(preencher após criar)_ |
 | Usuário IAM | `ownerpro-business-deploy` |
