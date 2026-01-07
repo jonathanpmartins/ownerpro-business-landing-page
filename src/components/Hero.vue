@@ -44,6 +44,7 @@ const gradientStyle = computed(() => ({
           <a
             href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20conhecer%20o%20OwnerPro%20Business."
             target="_blank"
+            rel="noopener noreferrer"
             class="bg-white px-8 py-4 rounded font-semibold transition shadow-lg hover:shadow-xl text-center"
             :style="{ color: primaryColor }"
           >

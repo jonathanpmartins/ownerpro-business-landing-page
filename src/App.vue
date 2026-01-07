@@ -12,9 +12,9 @@ import CtaSection from './components/CtaSection.vue'
 import FooterSection from './components/FooterSection.vue'
 import ColorPicker from './components/ColorPicker.vue'
 
-// Cores do tema - ajuste aqui as cores finais escolhidas
-const primaryColor = ref('#24847f')
-const secondaryColor = ref('#8f0000')
+// Cores do tema - Coastal Calm
+const primaryColor = ref('#0F766E')
+const secondaryColor = ref('#FB923C')
 
 // Cores das tags
 const tagColorOptions = [
@@ -26,16 +26,16 @@ const tagColorOptions = [
   { name: 'Secundária', bg: null, text: null },
   { name: 'Custom', bg: null, text: null },
 ]
-const selectedTagColor = ref(0)
+const selectedTagColor = ref(4) // 4 = Primária
 const customTagColor = ref('#6366f1')
 
 // Cor dos ícones sobre fundo primário (checks, etc)
 const accentOnPrimaryOptions = ['Branco', 'Secundária']
-const selectedAccentOnPrimary = ref(0) // 0 = Branco, 1 = Secundária
+const selectedAccentOnPrimary = ref(1) // 0 = Branco, 1 = Secundária
 
 // Cor dos boxes de ícones (seção Funcionalidades)
 const iconBoxColorOptions = ['Primária', 'Secundária']
-const selectedIconBoxColor = ref(0) // 0 = Primária, 1 = Secundária
+const selectedIconBoxColor = ref(1) // 0 = Primária, 1 = Secundária
 
 // Função para clarear uma cor
 const lightenColor = (hex, percent = 85) => {

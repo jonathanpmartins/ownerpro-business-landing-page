@@ -25,6 +25,7 @@ const gradientStyle = computed(() => ({
       <a
         href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20contratar%20o%20OwnerPro%20Business."
         target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded font-semibold shadow-lg hover:shadow-xl transition text-[#128C7E]"
       >
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
