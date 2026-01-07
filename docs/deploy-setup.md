@@ -9,8 +9,43 @@ Este documento descreve o passo a passo para configurar a infraestrutura de hosp
 ## Pré-requisitos
 
 - Conta AWS ativa
+- AWS CLI instalado ([instruções](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html))
 - Acesso ao Registro.br (ou seu provedor DNS)
 - Repositório no GitHub
+
+---
+
+## Passo 0: Configurar AWS CLI (Local)
+
+Configure um profile nomeado para este projeto:
+
+```bash
+aws configure --profile ownerpro
+```
+
+Informe:
+- **AWS Access Key ID**: (será criado no Passo 8)
+- **AWS Secret Access Key**: (será criado no Passo 8)
+- **Default region**: `sa-east-1`
+- **Default output format**: `json`
+
+> **Nota**: Se ainda não tem as credenciais, pule para o Passo 1 e volte aqui após o Passo 8.
+
+As credenciais ficam salvas em:
+```
+~/.aws/credentials    # Chaves de acesso
+~/.aws/config         # Região e formato
+```
+
+Para usar o profile em comandos:
+```bash
+aws s3 ls --profile ownerpro
+```
+
+Ou defina como padrão na sessão:
+```bash
+export AWS_PROFILE=ownerpro
+```
 
 ---
 
