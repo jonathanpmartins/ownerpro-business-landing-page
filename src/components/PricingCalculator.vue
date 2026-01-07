@@ -100,30 +100,26 @@ const formatNumber = (num) => {
         <table class="w-full">
           <thead class="bg-gray-100">
             <tr class="text-gray-600">
-              <th class="px-6 py-4 text-left font-semibold text-sm">Imóveis</th>
-              <th class="px-6 py-4 text-left font-semibold text-sm">Valor Fixo</th>
-              <th class="px-6 py-4 text-left font-semibold text-sm">Por Imóvel</th>
+              <th class="px-6 py-4 text-center font-semibold text-sm">Imóveis</th>
+              <th class="px-6 py-4 text-center font-semibold text-sm">Valor Fixo</th>
+              <th class="px-6 py-4 text-center font-semibold text-sm">Por Imóvel</th>
             </tr>
           </thead>
           <tbody>
-            <tr 
+            <tr
               v-for="(plan, i) in pricingPlans"
               :key="i"
               class="border-t border-gray-200 transition"
-              :style="isCurrentPlan(plan) ? { backgroundColor: primaryColor + '10' } : {}"
+              :style="isCurrentPlan(plan) ? {
+                backgroundColor: primaryColor + '10',
+                boxShadow: `inset 4px 0 0 ${secondaryColor}`
+              } : {}"
             >
-              <td class="px-6 py-4 text-gray-800">
-                <span class="flex items-center gap-2">
-                  <span 
-                    v-if="isCurrentPlan(plan)"
-                    class="w-2 h-2 rounded-full"
-                    :style="{ backgroundColor: secondaryColor }"
-                  />
-                  {{ plan.min }} - {{ plan.max }}
-                </span>
+              <td class="px-6 py-4 text-gray-800 text-center">
+                {{ plan.min }} - {{ plan.max }}
               </td>
-              <td class="px-6 py-4 font-semibold text-gray-800">R$ {{ plan.fixed }}</td>
-              <td class="px-6 py-4 font-semibold" :style="{ color: secondaryColor }">R$ {{ plan.perUnit }}</td>
+              <td class="px-6 py-4 font-semibold text-gray-800 text-center">R$ {{ plan.fixed }}</td>
+              <td class="px-6 py-4 font-semibold text-center" :style="{ color: secondaryColor }">R$ {{ plan.perUnit }}</td>
             </tr>
           </tbody>
         </table>

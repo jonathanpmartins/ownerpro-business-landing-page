@@ -22,8 +22,8 @@ const gradientStyle = computed(() => ({
           style="background-color: rgba(255,255,255,0.15)"
         >
           <span
-            class="w-2 h-2 rounded-full animate-pulse"
-            :style="{ backgroundColor: secondaryColor }"
+            class="status-dot w-2 h-2 rounded-full"
+            :style="{ backgroundColor: secondaryColor, '--glow-color': secondaryColor }"
           ></span>
           Sistema financeiro e operacional
         </div>
@@ -54,3 +54,20 @@ const gradientStyle = computed(() => ({
     </div>
   </section>
 </template>
+
+<style scoped>
+.status-dot {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 1px var(--glow-color);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 3px var(--glow-color), 0 0 6px var(--glow-color);
+    filter: brightness(1.4);
+  }
+}
+</style>

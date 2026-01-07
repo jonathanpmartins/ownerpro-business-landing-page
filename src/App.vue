@@ -13,8 +13,8 @@ import FooterSection from './components/FooterSection.vue'
 import ColorPicker from './components/ColorPicker.vue'
 
 // Cores do tema - ajuste aqui as cores finais escolhidas
-const primaryColor = ref('#0D5C63')
-const secondaryColor = ref('#E8930A')
+const primaryColor = ref('#24847f')
+const secondaryColor = ref('#8f0000')
 
 // Disponibiliza as cores para todos os componentes filhos
 provide('primaryColor', primaryColor)
