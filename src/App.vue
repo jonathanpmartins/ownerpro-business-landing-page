@@ -20,8 +20,9 @@ const secondaryColor = ref('#8f0000')
 provide('primaryColor', primaryColor)
 provide('secondaryColor', secondaryColor)
 
-// Controle do color picker (remover em produção)
-const showColorPicker = ref(true)
+// Controle do color picker - ativado via ?colors=view na URL
+const urlParams = new URLSearchParams(window.location.search)
+const showColorPicker = ref(urlParams.get('colors') === 'view')
 
 // Função para escurecer cor
 const darkenColor = (hex, percent) => {
@@ -38,21 +39,13 @@ provide('darkenColor', darkenColor)
 
 <template>
   <div class="min-h-screen bg-gray-50 font-sans">
-    <!-- Color Picker - remover em produção -->
+    <!-- Color Picker - ativado via ?colors=view -->
     <ColorPicker
       v-if="showColorPicker"
       v-model:primary="primaryColor"
       v-model:secondary="secondaryColor"
       @close="showColorPicker = false"
     />
-
-    <button
-      v-if="!showColorPicker"
-      @click="showColorPicker = true"
-      class="fixed top-4 right-4 z-50 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition"
-    >
-      🎨
-    </button>
 
     <Header />
     <Hero />
