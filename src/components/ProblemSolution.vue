@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 
 const primaryColor = inject('primaryColor')
-const secondaryColor = inject('secondaryColor')
+const accentOnPrimary = inject('accentOnPrimary')
 
 const problems = [
   'Planilhas complexas para calcular repasses de proprietários',
@@ -56,7 +56,7 @@ const solutions = [
               :key="i"
               class="flex items-start gap-3"
             >
-              <span class="text-white/90">
+              <span :style="{ color: accentOnPrimary }">
                 <svg class="w-5 h-5 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>

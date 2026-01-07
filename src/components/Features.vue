@@ -2,7 +2,7 @@
 import { inject } from 'vue'
 
 const primaryColor = inject('primaryColor')
-const secondaryColor = inject('secondaryColor')
+const tagColor = inject('tagColor')
 
 const features = [
   {
@@ -53,15 +53,15 @@ const features = [
           Financeiro, operacional e gestão de proprietários integrados em uma única plataforma.
         </p>
       </div>
-      
+
       <div class="grid md:grid-cols-2 gap-8">
-        <div 
+        <div
           v-for="(feature, i) in features"
           :key="i"
           class="bg-gray-50 rounded-lg p-6 hover:shadow-md transition group"
         >
           <div class="flex items-start gap-4">
-            <div 
+            <div
               class="w-12 h-12 rounded-lg flex items-center justify-center text-white flex-shrink-0"
               :style="{ backgroundColor: primaryColor }"
             >
@@ -73,11 +73,14 @@ const features = [
               <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ feature.title }}</h3>
               <p class="text-gray-600 text-sm mb-3">{{ feature.description }}</p>
               <div class="flex flex-wrap gap-2">
-                <span 
+                <span
                   v-for="(tag, j) in feature.highlights"
                   :key="j"
                   class="text-xs px-2 py-1 rounded-full"
-                  :style="{ backgroundColor: secondaryColor + '20', color: secondaryColor }"
+                  :style="{
+                    backgroundColor: tagColor.bg,
+                    color: tagColor.text
+                  }"
                 >
                   {{ tag }}
                 </span>
