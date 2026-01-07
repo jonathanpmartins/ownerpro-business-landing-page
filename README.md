@@ -120,9 +120,6 @@ Para deploy manual, use o script `deploy.sh`:
 # Configure o AWS CLI com profile (apenas uma vez)
 aws configure --profile ownerpro
 
-# Configure o ID do CloudFront
-export CLOUDFRONT_DISTRIBUTION_ID=seu-id-aqui
-
 # Execute o deploy
 chmod +x deploy.sh  # primeira vez
 ./deploy.sh

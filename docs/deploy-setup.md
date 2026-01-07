@@ -278,10 +278,8 @@ O deploy será executado automaticamente. Acompanhe em **Actions** no GitHub.
 ### Opção B: Via script manual
 
 ```bash
-# Configure a variável de ambiente
-export CLOUDFRONT_DISTRIBUTION_ID=seu-distribution-id
-
 # Execute o deploy
+chmod +x deploy.sh  # primeira vez
 ./deploy.sh
 ```
 

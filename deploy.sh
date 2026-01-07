@@ -9,13 +9,7 @@ set -e
 BUCKET_NAME="ownerpro-business-landing-page"
 REGION="sa-east-1"
 AWS_PROFILE="ownerpro"
-
-# Verifica se CLOUDFRONT_DISTRIBUTION_ID está definido
-if [ -z "$CLOUDFRONT_DISTRIBUTION_ID" ]; then
-    echo "Erro: CLOUDFRONT_DISTRIBUTION_ID não está definido."
-    echo "Execute: export CLOUDFRONT_DISTRIBUTION_ID=seu-id"
-    exit 1
-fi
+CLOUDFRONT_DISTRIBUTION_ID="E2NOHZ7D65MMCS"
 
 echo "=== OwnerPro Business Deploy ==="
 echo ""
