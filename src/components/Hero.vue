@@ -42,7 +42,7 @@ const gradientStyle = computed(() => ({
 
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="https://wa.me/5554991864582"
+            href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20conhecer%20o%20OwnerPro%20Business."
             target="_blank"
             class="bg-white px-8 py-4 rounded font-semibold transition shadow-lg hover:shadow-xl text-center"
             :style="{ color: primaryColor }"

@@ -23,7 +23,7 @@ const gradientStyle = computed(() => ({
       </p>
 
       <a
-        href="https://wa.me/5554991864582"
+        href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20contratar%20o%20OwnerPro%20Business."
         target="_blank"
         class="inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded font-semibold shadow-lg hover:shadow-xl transition text-[#128C7E]"
       >
