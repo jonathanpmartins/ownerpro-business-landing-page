@@ -12,9 +12,9 @@ const portalFeatures = [
 ]
 
 const screenshots = [
-  { src: '/screenshots/portal-1-960.png', srcFull: '/screenshots/portal-1.png', alt: 'Tela de Login do Portal' },
-  { src: '/screenshots/portal-2-960.png', srcFull: '/screenshots/portal-2.png', alt: 'Dashboard de Ocupação' },
-  { src: '/screenshots/portal-3-960.png', srcFull: '/screenshots/portal-3.png', alt: 'Calendário de Reservas' },
+  { src: '/screenshots/portal-1-960.webp', srcFull: '/screenshots/portal-1.webp', alt: 'Tela de Login do Portal' },
+  { src: '/screenshots/portal-2-960.webp', srcFull: '/screenshots/portal-2.webp', alt: 'Dashboard de Ocupação' },
+  { src: '/screenshots/portal-3-960.webp', srcFull: '/screenshots/portal-3.webp', alt: 'Calendário de Reservas' },
 ]
 
 const lightboxOpen = ref(false)
@@ -130,17 +130,19 @@ onUnmounted(() => {
                 <!-- Navigation Arrows -->
                 <button
                   @click="prevSlide"
+                  aria-label="Slide anterior"
                   class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all"
                 >
-                  <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button
                   @click="nextSlide"
+                  aria-label="Próximo slide"
                   class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md transition-all"
                 >
-                  <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
@@ -149,11 +151,14 @@ onUnmounted(() => {
           </div>
 
           <!-- Dots Indicator (fora do box) -->
-          <div class="flex justify-center gap-2 mt-4">
+          <div class="flex justify-center gap-2 mt-4" role="tablist" aria-label="Slides do portal">
             <button
               v-for="(_, index) in screenshots"
               :key="index"
               @click="goToSlide(index)"
+              :aria-label="`Ir para slide ${index + 1} de ${screenshots.length}`"
+              :aria-selected="currentSlide === index"
+              role="tab"
               class="w-2 h-2 rounded-full transition-all"
               :class="currentSlide === index ? 'w-6' : 'bg-gray-300 hover:bg-gray-400'"
               :style="currentSlide === index ? { backgroundColor: primaryColor } : {}"
@@ -174,9 +179,10 @@ onUnmounted(() => {
           <!-- Close Button -->
           <button
             class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            aria-label="Fechar visualização"
             @click="closeLightbox"
           >
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -184,9 +190,10 @@ onUnmounted(() => {
           <!-- Previous Button -->
           <button
             class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all z-10"
+            aria-label="Imagem anterior"
             @click.stop="prevSlide"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -194,9 +201,10 @@ onUnmounted(() => {
           <!-- Next Button -->
           <button
             class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all z-10"
+            aria-label="Próxima imagem"
             @click.stop="nextSlide"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -205,6 +213,7 @@ onUnmounted(() => {
           <img
             :src="screenshots[currentSlide].srcFull"
             :alt="screenshots[currentSlide].alt"
+            loading="lazy"
             class="max-w-full max-h-full object-contain"
             @click.stop
           />
