@@ -1,26 +1,28 @@
 <script setup>
 import { inject, computed } from 'vue'
+import ImageCarousel from './ImageCarousel.vue'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
-const darkenColor = inject('darkenColor')
 
 const gradientStyle = computed(() => ({
-  background: `linear-gradient(135deg, ${primaryColor.value} 0%, ${darkenColor(primaryColor.value, 25)} 100%)`
+  backgroundColor: primaryColor.value
 }))
 
-// Gradiente de fade da imagem (da cor primária para transparente)
-const imageFadeGradient = computed(() => ({
-  background: `linear-gradient(to right, ${primaryColor.value} 0%, ${primaryColor.value}dd 15%, transparent 40%)`
-}))
+// Screenshots do sistema
+const screenshots = [
+  { src: '/screenshots/portal-1-960.webp', srcFull: '/screenshots/portal-1.webp', alt: 'Dashboard do Sistema' },
+  { src: '/screenshots/portal-2-960.webp', srcFull: '/screenshots/portal-2.webp', alt: 'Calendário de Reservas' },
+  { src: '/screenshots/portal-3-960.webp', srcFull: '/screenshots/portal-3.webp', alt: 'Relatórios' },
+]
 </script>
 
 <template>
   <section
-    class="text-white py-16 lg:py-24"
+    class="text-white"
     :style="gradientStyle"
   >
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-6xl mx-auto px-6 py-16 lg:py-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Texto -->
         <div>
@@ -71,25 +73,31 @@ const imageFadeGradient = computed(() => ({
           </div>
         </div>
 
-        <!-- Screenshots Carousel -->
+        <!-- Carrossel -->
         <div class="hidden lg:block">
-          <ImageCarousel
-            :images="screenshots"
-            :border-color="secondaryColor"
-            :autoplay-interval="5000"
-            :show-lightbox="true"
-          />
+          <div class="rounded-lg overflow-hidden shadow-2xl">
+            <ImageCarousel
+              :images="screenshots"
+              :autoplay-interval="5000"
+              :show-lightbox="true"
+              :minimal="true"
+              dot-color="#fff"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Mobile: Carousel abaixo do texto -->
+      <!-- Mobile: Carrossel abaixo -->
       <div class="lg:hidden mt-10">
-        <ImageCarousel
-          :images="screenshots"
-          :border-color="secondaryColor"
-          :autoplay-interval="5000"
-          :show-lightbox="true"
-        />
+        <div class="rounded-lg overflow-hidden shadow-2xl">
+          <ImageCarousel
+            :images="screenshots"
+            :autoplay-interval="5000"
+            :show-lightbox="true"
+            :minimal="true"
+            dot-color="#fff"
+          />
+        </div>
       </div>
     </div>
   </section>

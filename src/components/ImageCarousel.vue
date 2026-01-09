@@ -18,6 +18,14 @@ const props = defineProps({
   showLightbox: {
     type: Boolean,
     default: true
+  },
+  minimal: {
+    type: Boolean,
+    default: false
+  },
+  dotColor: {
+    type: String,
+    default: null
   }
 })
 
@@ -84,11 +92,10 @@ onUnmounted(() => {
   <div>
     <!-- Carousel Box -->
     <div
-      class="rounded p-1"
-      :style="borderColor ? { backgroundColor: borderColor } : {}"
-      :class="{ 'bg-transparent': !borderColor }"
+      :class="minimal ? '' : 'rounded p-1'"
+      :style="!minimal && borderColor ? { backgroundColor: borderColor } : {}"
     >
-      <div class="bg-white rounded overflow-hidden">
+      <div :class="minimal ? 'overflow-hidden' : 'bg-white rounded overflow-hidden'">
         <!-- Carousel Container -->
         <div class="relative">
           <!-- Slides -->
@@ -128,20 +135,43 @@ onUnmounted(() => {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
+          <!-- Dots Indicator (overlay when minimal) -->
+          <div
+            v-if="images.length > 1 && minimal"
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 px-3 py-1.5 rounded-full bg-black/30"
+          >
+            <button
+              v-for="(_, index) in images"
+              :key="index"
+              @click="goToSlide(index)"
+              :aria-label="`Ir para slide ${index + 1}`"
+              class="h-2 rounded-full transition-all"
+              :class="currentSlide === index ? 'w-6' : 'w-2'"
+              :style="{
+                backgroundColor: currentSlide === index
+                  ? (dotColor || '#fff')
+                  : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.5)')
+              }"
+            />
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Dots Indicator -->
-    <div v-if="images.length > 1" class="flex justify-center gap-2 mt-4">
+    <!-- Dots Indicator (below carousel when not minimal) -->
+    <div v-if="images.length > 1 && !minimal" class="flex justify-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-black/30 w-fit mx-auto">
       <button
         v-for="(_, index) in images"
         :key="index"
         @click="goToSlide(index)"
         :aria-label="`Ir para slide ${index + 1}`"
-        class="w-2 h-2 rounded-full transition-all"
-        :class="currentSlide === index ? 'w-6' : 'bg-gray-300 hover:bg-gray-400'"
-        :style="currentSlide === index && borderColor ? { backgroundColor: borderColor } : {}"
+        class="h-2 rounded-full transition-all"
+        :class="currentSlide === index ? 'w-6' : 'w-2'"
+        :style="{
+          backgroundColor: currentSlide === index
+            ? (dotColor || borderColor || '#fff')
+            : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.4)')
+        }"
       />
     </div>
 
