@@ -5,8 +5,17 @@ import ImageCarousel from './ImageCarousel.vue'
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
 
+const darkenColor = (hex, percent) => {
+  const num = parseInt(hex.replace('#', ''), 16)
+  const amt = Math.round(2.55 * percent)
+  const R = Math.max((num >> 16) - amt, 0)
+  const G = Math.max((num >> 8 & 0x00FF) - amt, 0)
+  const B = Math.max((num & 0x0000FF) - amt, 0)
+  return `#${(0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1)}`
+}
+
 const gradientStyle = computed(() => ({
-  backgroundColor: primaryColor.value
+  background: `linear-gradient(135deg, ${primaryColor.value} 0%, ${darkenColor(primaryColor.value, 25)} 100%)`
 }))
 
 // Screenshots do sistema
