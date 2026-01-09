@@ -18,11 +18,11 @@ const gradientStyle = computed(() => ({
   background: `linear-gradient(135deg, ${primaryColor.value} 0%, ${darkenColor(primaryColor.value, 25)} 100%)`
 }))
 
-// Screenshots do sistema
+// Screenshots temporários - substituir por imagens reais depois
 const screenshots = [
-  { src: '/screenshots/portal-1-960.webp', srcFull: '/screenshots/portal-1.webp', alt: 'Dashboard do Sistema' },
-  { src: '/screenshots/portal-2-960.webp', srcFull: '/screenshots/portal-2.webp', alt: 'Calendário de Reservas' },
-  { src: '/screenshots/portal-3-960.webp', srcFull: '/screenshots/portal-3.webp', alt: 'Relatórios' },
+  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+1', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+1', alt: 'Screenshot 1' },
+  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+2', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+2', alt: 'Screenshot 2' },
+  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+3', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+3', alt: 'Screenshot 3' },
 ]
 </script>
 
