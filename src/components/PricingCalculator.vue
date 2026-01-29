@@ -17,7 +17,7 @@ const pricingPlans = [
 const currentPrice = computed(() => {
   const count = propertyCount.value
   const plan = pricingPlans.find(p => count >= p.min && count <= p.max)
-  
+
   if (!plan) {
     const lastPlan = pricingPlans[pricingPlans.length - 1]
     return {
@@ -27,7 +27,7 @@ const currentPrice = computed(() => {
       plan: lastPlan
     }
   }
-  
+
   return {
     fixed: plan.fixed,
     perUnit: plan.perUnit,
@@ -54,9 +54,9 @@ const formatNumber = (num) => {
           Preços que acompanham o crescimento da sua operação
         </p>
       </div>
-      
+
       <!-- Calculadora -->
-      <div 
+      <div
         class="rounded-lg p-6 mb-8 text-white"
         :style="{ backgroundColor: primaryColor }"
       >
@@ -126,7 +126,7 @@ const formatNumber = (num) => {
       </div>
 
       <p class="text-center text-gray-500 text-sm mt-6">
-        * Implantação e emissão de notas fiscais possuem valores à parte. Consulte-nos para mais informações.
+        * Implantação possue valor à parte, consulte-nos para mais informações.
       </p>
     </div>
   </section>
