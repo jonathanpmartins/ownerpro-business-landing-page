@@ -18,11 +18,12 @@ const gradientStyle = computed(() => ({
   background: `linear-gradient(135deg, ${primaryColor.value} 0%, ${darkenColor(primaryColor.value, 25)} 100%)`
 }))
 
-// Screenshots temporários - substituir por imagens reais depois
 const screenshots = [
-  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+1', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+1', alt: 'Screenshot 1' },
-  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+2', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+2', alt: 'Screenshot 2' },
-  { src: 'https://dummyimage.com/960x600/0F766E/ffffff&text=Screenshot+3', srcFull: 'https://dummyimage.com/1920x1200/0F766E/ffffff&text=Screenshot+3', alt: 'Screenshot 3' },
+  { src: '/hero/01-960.webp', srcFull: '/hero/01-1600.webp', alt: 'OwnerPro Business - Tela 1' },
+  { src: '/hero/02-960.webp', srcFull: '/hero/02-1600.webp', alt: 'OwnerPro Business - Tela 2' },
+  { src: '/hero/03-960.webp', srcFull: '/hero/03-1600.webp', alt: 'OwnerPro Business - Tela 3' },
+  { src: '/hero/04-960.webp', srcFull: '/hero/04-1600.webp', alt: 'OwnerPro Business - Tela 4' },
+  { src: '/hero/05-960.webp', srcFull: '/hero/05-1600.webp', alt: 'OwnerPro Business - Tela 5' },
 ]
 </script>
 
