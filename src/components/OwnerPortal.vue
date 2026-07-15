@@ -13,9 +13,9 @@ const portalFeatures = [
 ]
 
 const screenshots = [
-  { src: '/screenshots/portal-1-960.webp', srcFull: '/screenshots/portal-1.webp', alt: 'Tela de Login do Portal' },
-  { src: '/screenshots/portal-2-960.webp', srcFull: '/screenshots/portal-2.webp', alt: 'Dashboard de Ocupação' },
-  { src: '/screenshots/portal-3-960.webp', srcFull: '/screenshots/portal-3.webp', alt: 'Calendário de Reservas' },
+  { src: '/screenshots/portal-1-960.webp', srcFull: '/screenshots/portal-1.webp', alt: 'Tela de login do portal do proprietário para prestação de contas' },
+  { src: '/screenshots/portal-2-960.webp', srcFull: '/screenshots/portal-2.webp', alt: 'Dashboard de ocupação dos imóveis de temporada no portal do proprietário' },
+  { src: '/screenshots/portal-3-960.webp', srcFull: '/screenshots/portal-3.webp', alt: 'Calendário de reservas do imóvel de aluguel por temporada' },
 ]
 </script>
 

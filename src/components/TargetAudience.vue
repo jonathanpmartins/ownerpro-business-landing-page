@@ -10,7 +10,7 @@ const targetAudience = [
   <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-2">Para quem é o OwnerPro Business?</h2>
+        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-2">Para gestores e administradoras de aluguel por temporada</h2>
         <p class="text-gray-600">Ideal para operações que buscam profissionalizar a gestão</p>
       </div>
 

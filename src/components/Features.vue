@@ -50,7 +50,7 @@ const features = [
   <section id="funcionalidades" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-4">Funcionalidades Completas</h2>
+        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-4">Funcionalidades completas para gestão de temporada</h2>
         <p class="text-gray-600 max-w-2xl mx-auto">
           Financeiro, operacional e gestão de proprietários integrados em uma única plataforma.
         </p>

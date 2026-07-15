@@ -19,11 +19,11 @@ const gradientStyle = computed(() => ({
 }))
 
 const screenshots = [
-  { src: '/hero/01-960.webp', srcFull: '/hero/01-1600.webp', alt: 'OwnerPro Business - Tela 1' },
-  { src: '/hero/02-960.webp', srcFull: '/hero/02-1600.webp', alt: 'OwnerPro Business - Tela 2' },
-  { src: '/hero/03-960.webp', srcFull: '/hero/03-1600.webp', alt: 'OwnerPro Business - Tela 3' },
-  { src: '/hero/04-960.webp', srcFull: '/hero/04-1600.webp', alt: 'OwnerPro Business - Tela 4' },
-  { src: '/hero/05-960.webp', srcFull: '/hero/05-1600.webp', alt: 'OwnerPro Business - Tela 5' },
+  { src: '/hero/01-960.webp', srcFull: '/hero/01-1600.webp', alt: 'Dashboard financeiro de vendas e cancelamentos do sistema de aluguel por temporada OwnerPro Business' },
+  { src: '/hero/02-960.webp', srcFull: '/hero/02-1600.webp', alt: 'Relatório de ocupação, check-ins e check-outs no software de gestão de temporada' },
+  { src: '/hero/03-960.webp', srcFull: '/hero/03-1600.webp', alt: 'Painel de chegadas do dia com reservas de Airbnb e Booking por imóvel' },
+  { src: '/hero/04-960.webp', srcFull: '/hero/04-1600.webp', alt: 'Cadastro de imóveis com status de ocupação, limpeza e proprietários' },
+  { src: '/hero/05-960.webp', srcFull: '/hero/05-1600.webp', alt: 'Login do Canal do Anfitrião, portal do proprietário do OwnerPro Business' },
 ]
 </script>
 
@@ -53,7 +53,7 @@ const screenshots = [
           </h1>
 
           <p class="text-lg opacity-80 mb-6">
-            Desenvolvida por quem vive a gestão na prática. Não é apenas software — é uma ferramenta de gestão para quem quer crescer com controle.
+            O sistema de gestão de aluguel por temporada feito por quem vive a operação na prática — financeiro, repasses e prestação de contas em um só lugar.
           </p>
 
           <!-- Feature tags -->
