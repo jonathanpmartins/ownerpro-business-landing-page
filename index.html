@@ -70,10 +70,8 @@
     <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams.woff" crossorigin fetchpriority="high" />
     <link rel="preload" as="font" type="font/woff" href="/fonts/CaviarDreams_Bold.woff" crossorigin fetchpriority="high" />
 
-    <!-- Preload carousel images -->
-    <link rel="preload" as="image" href="/screenshots/portal-1-960.webp" />
-    <link rel="preload" as="image" href="/screenshots/portal-2-960.webp" />
-    <link rel="preload" as="image" href="/screenshots/portal-3-960.webp" />
+    <!-- Preload da imagem do hero (LCP); as demais carregam sob demanda -->
+    <link rel="preload" as="image" href="/hero/01-960.webp" fetchpriority="high" />
   </head>
   <body>
     <div id="app"></div>

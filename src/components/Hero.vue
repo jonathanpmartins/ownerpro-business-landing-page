@@ -89,6 +89,7 @@ const screenshots = [
           <div class="rounded-lg overflow-hidden shadow-2xl">
             <ImageCarousel
               :images="screenshots"
+            :eager="true"
               :autoplay-interval="5000"
               :show-lightbox="true"
               :minimal="true"
@@ -103,6 +104,7 @@ const screenshots = [
         <div class="rounded-lg overflow-hidden shadow-2xl">
           <ImageCarousel
             :images="screenshots"
+            :eager="true"
             :autoplay-interval="5000"
             :show-lightbox="true"
             :minimal="true"

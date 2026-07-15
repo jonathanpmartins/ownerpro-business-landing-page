@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   images: {
@@ -26,10 +26,29 @@ const props = defineProps({
   dotColor: {
     type: String,
     default: null
+  },
+  // true para carousels acima da dobra: primeira imagem vira prioridade de LCP
+  eager: {
+    type: Boolean,
+    default: false
   }
 })
 
 const currentSlide = ref(0)
+
+// Só o slide atual tem src no load; vizinhos são aquecidos depois, o resto sob demanda
+const loadedSlides = ref(new Set([0]))
+
+const warmAround = (idx) => {
+  const n = props.images.length
+  const next = new Set(loadedSlides.value)
+  next.add(idx)
+  next.add((idx + 1) % n)
+  next.add((idx - 1 + n) % n)
+  loadedSlides.value = next
+}
+
+watch(currentSlide, warmAround)
 const lightboxOpen = ref(false)
 let autoplayTimer = null
 
@@ -80,6 +99,8 @@ onMounted(() => {
   if (props.autoplayInterval > 0) {
     autoplayTimer = setInterval(nextSlide, props.autoplayInterval)
   }
+  // Aquece os vizinhos fora do caminho crítico, antes do primeiro autoplay
+  setTimeout(() => warmAround(currentSlide.value), 2500)
 })
 
 onUnmounted(() => {
@@ -103,8 +124,10 @@ onUnmounted(() => {
             <img
               v-for="(image, index) in images"
               :key="index"
-              :src="image.src"
+              :src="loadedSlides.has(index) ? image.src : null"
               :alt="image.alt"
+              :loading="eager && index === 0 ? 'eager' : 'lazy'"
+              :fetchpriority="eager && index === 0 ? 'high' : null"
               class="w-full h-auto transition-opacity duration-400"
               :class="[
                 index === currentSlide ? 'opacity-100 relative' : 'opacity-0 absolute inset-0',
