@@ -246,7 +246,7 @@ const chartDot = computed(() => {
                 {{ plan.min }}–{{ plan.max }}
               </td>
               <td class="px-3 sm:px-6 py-4 font-semibold text-gray-800 text-center whitespace-nowrap">R$ {{ plan.fixed }}</td>
-              <td class="px-3 sm:px-6 py-4 font-semibold text-center whitespace-nowrap" :style="{ color: darkenColor(secondaryColor, 30) }">R$ {{ plan.perUnit }}</td>
+              <td class="px-3 sm:px-6 py-4 font-semibold text-center whitespace-nowrap" :style="{ color: primaryColor }">R$ {{ plan.perUnit }}</td>
             </tr>
           </tbody>
         </table>
