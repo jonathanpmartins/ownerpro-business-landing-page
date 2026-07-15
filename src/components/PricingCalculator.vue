@@ -224,9 +224,9 @@ const chartDot = computed(() => {
         <table class="w-full">
           <thead class="bg-gray-100">
             <tr class="text-gray-600">
-              <th class="px-6 py-4 text-center font-semibold text-sm">Imóveis</th>
-              <th class="px-6 py-4 text-center font-semibold text-sm">Valor Fixo</th>
-              <th class="px-6 py-4 text-center font-semibold text-sm">Por Imóvel</th>
+              <th class="px-3 sm:px-6 py-4 text-center font-semibold text-sm whitespace-nowrap">Imóveis</th>
+              <th class="px-3 sm:px-6 py-4 text-center font-semibold text-sm whitespace-nowrap">Valor Fixo</th>
+              <th class="px-3 sm:px-6 py-4 text-center font-semibold text-sm whitespace-nowrap">Por Imóvel</th>
             </tr>
           </thead>
           <tbody>
@@ -239,11 +239,11 @@ const chartDot = computed(() => {
                 boxShadow: `inset 4px 0 0 ${secondaryColor}`
               } : {}"
             >
-              <td class="px-6 py-4 text-gray-800 text-center">
-                {{ plan.min }} - {{ plan.max }}
+              <td class="px-3 sm:px-6 py-4 text-gray-800 text-center whitespace-nowrap">
+                {{ plan.min }}–{{ plan.max }}
               </td>
-              <td class="px-6 py-4 font-semibold text-gray-800 text-center">R$ {{ plan.fixed }}</td>
-              <td class="px-6 py-4 font-semibold text-center" :style="{ color: secondaryColor }">R$ {{ plan.perUnit }}</td>
+              <td class="px-3 sm:px-6 py-4 font-semibold text-gray-800 text-center whitespace-nowrap">R$ {{ plan.fixed }}</td>
+              <td class="px-3 sm:px-6 py-4 font-semibold text-center whitespace-nowrap" :style="{ color: secondaryColor }">R$ {{ plan.perUnit }}</td>
             </tr>
           </tbody>
         </table>

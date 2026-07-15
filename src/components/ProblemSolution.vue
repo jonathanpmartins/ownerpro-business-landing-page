@@ -2,69 +2,58 @@
 import { inject } from 'vue'
 
 const primaryColor = inject('primaryColor')
-const accentOnPrimary = inject('accentOnPrimary')
 
-const problems = [
-  'Repasses em planilhas',
-  'Sem visão financeira',
-  'Erros manuais',
-  'Difícil controle de escala',
-  'Prestação de contas confusa',
-  'Operação via WhatsApp',
-]
-
-const solutions = [
-  'Repasses automáticos',
-  'Visão financeira completa',
-  'Sem erros manuais',
-  'Escala com controle',
-  'Prestação de contas clara',
-  'Operação centralizada',
+// Pares antes → depois: mesma dor, mesma linha
+const transformations = [
+  { problem: 'Repasses em planilhas', solution: 'Repasses automáticos' },
+  { problem: 'Sem visão financeira', solution: 'Visão financeira completa' },
+  { problem: 'Erros manuais', solution: 'Sem erros manuais' },
+  { problem: 'Difícil controle de escala', solution: 'Escala com controle' },
+  { problem: 'Prestação de contas confusa', solution: 'Prestação de contas clara' },
+  { problem: 'Operação via WhatsApp', solution: 'Operação centralizada' },
 ]
 </script>
 
 <template>
   <section class="py-16 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-800 mb-6">
-            Você conhece esses problemas?
-          </h2>
-          <div class="space-y-4">
-            <div
-              v-for="(problem, i) in problems"
-              :key="i"
-              class="flex items-start gap-3"
-            >
-              <span class="text-red-500 mt-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </span>
-              <p class="text-gray-700">{{ problem }}</p>
-            </div>
-          </div>
-        </div>
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+          Você conhece esses problemas?
+        </h2>
+        <p class="text-gray-600">
+          Veja o que muda quando a operação entra no OwnerPro Business
+        </p>
+      </div>
 
+      <div class="bg-white rounded-lg border border-gray-200 overflow-hidden divide-y divide-gray-100">
         <div
-          class="p-8 rounded-lg text-white"
-          :style="{ backgroundColor: primaryColor }"
+          v-for="(item, i) in transformations"
+          :key="i"
+          class="grid md:grid-cols-[1fr_auto_1fr] items-center gap-2 md:gap-4 px-6 py-5"
         >
-          <h3 class="text-2xl font-bold mb-6">OwnerPro Business resolve</h3>
-          <div class="space-y-4">
-            <div
-              v-for="(solution, i) in solutions"
-              :key="i"
-              class="flex items-start gap-3"
-            >
-              <span :style="{ color: accentOnPrimary }">
-                <svg class="w-5 h-5 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </span>
-              <p class="opacity-95">{{ solution }}</p>
-            </div>
+          <div class="flex items-center gap-3">
+            <span class="text-red-400 shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </span>
+            <p class="text-gray-500">{{ item.problem }}</p>
+          </div>
+
+          <span class="hidden md:block text-gray-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+
+          <div class="flex items-center gap-3 pl-8 md:pl-0">
+            <span class="shrink-0" :style="{ color: primaryColor }">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <p class="text-gray-800 font-semibold">{{ item.solution }}</p>
           </div>
         </div>
       </div>
