@@ -1,24 +1,37 @@
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed, watch, inject } from 'vue'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
 
-const propertyCount = ref(25)
+const propertyCount = ref(30)
 
+// Faixas acima de 500 não aparecem na tabela, mas entram no cálculo
 const pricingPlans = [
-  { min: 1, max: 20, fixed: 390, perUnit: 19 },
-  { min: 21, max: 50, fixed: 490, perUnit: 14 },
-  { min: 51, max: 100, fixed: 590, perUnit: 12 },
-  { min: 101, max: 200, fixed: 690, perUnit: 11 },
-  { min: 201, max: 500, fixed: 890, perUnit: 10 },
+  { min: 1, max: 20, fixed: 290, perUnit: 17 },
+  { min: 21, max: 50, fixed: 390, perUnit: 12 },
+  { min: 51, max: 100, fixed: 490, perUnit: 10 },
+  { min: 101, max: 200, fixed: 590, perUnit: 9 },
+  { min: 201, max: 500, fixed: 790, perUnit: 8 },
+  { min: 501, max: 1000, fixed: 1290, perUnit: 7 },
+  { min: 1001, max: 2000, fixed: 2290, perUnit: 6 },
+  { min: 2001, max: 5000, fixed: 4290, perUnit: 5 },
+  { min: 5001, max: 10000, fixed: 9290, perUnit: 4 },
 ]
 
+const MAX_PROPERTIES = 10000
+const visiblePlans = pricingPlans.filter(p => p.max <= 500)
+
 const planFor = (count) =>
-  pricingPlans.find(p => count >= p.min && count <= p.max) ?? pricingPlans[pricingPlans.length - 1]
+  pricingPlans.find(p => count >= p.min && count <= p.max) ??
+  pricingPlans[pricingPlans.length - 1]
+
+watch(propertyCount, (v) => {
+  if (v > MAX_PROPERTIES) propertyCount.value = MAX_PROPERTIES
+})
 
 const currentPrice = computed(() => {
-  const count = propertyCount.value || 1
+  const count = Math.min(propertyCount.value || 1, MAX_PROPERTIES)
   const plan = planFor(count)
 
   return {
@@ -45,7 +58,7 @@ const perPropertyPrice = computed(() => {
 })
 
 // Curva de custo por imóvel: fixo/n + unitário, de 1 a 500 imóveis
-const CHART = { w: 440, h: 88, padTop: 18, yMin: 10 }
+const CHART = { w: 440, h: 88, padTop: 18, yMin: 8 }
 
 const costPerUnit = (n) => {
   const plan = planFor(n)
@@ -56,32 +69,38 @@ const clampedCount = computed(() =>
   Math.min(Math.max(propertyCount.value || 1, 1), 500)
 )
 
-// Escala log: cobre de R$ ~11 (500 imóveis) a R$ ~409 (1 imóvel) sem deformar
-const yTop = costPerUnit(1) * 1.08
+// Escala log: cobre do menor (500 imóveis) ao maior valor (1 imóvel) sem deformar
+const yTop = computed(() => costPerUnit(1) * 1.08)
 
 const chartX = (n) => ((n - 1) / 499) * CHART.w
 const chartY = (v) => {
-  const t = (Math.log10(v) - Math.log10(CHART.yMin)) / (Math.log10(yTop) - Math.log10(CHART.yMin))
+  const t = (Math.log10(v) - Math.log10(CHART.yMin)) / (Math.log10(yTop.value) - Math.log10(CHART.yMin))
   return CHART.padTop + CHART.h - t * CHART.h
 }
 
-const buildCurve = () => {
+const curvePoints = computed(() => {
   const points = []
   for (let n = 1; n <= 500; n += 2) {
     points.push(`${chartX(n).toFixed(1)},${chartY(costPerUnit(n)).toFixed(1)}`)
   }
   points.push(`${CHART.w},${chartY(costPerUnit(500)).toFixed(1)}`)
   return points.join(' L')
-}
+})
 
-const curvePath = `M${buildCurve()}`
-const areaPath = `M${buildCurve()} L${CHART.w},${CHART.padTop + CHART.h} L0,${CHART.padTop + CHART.h} Z`
+const curvePath = computed(() => `M${curvePoints.value}`)
+const areaPath = computed(() =>
+  `M${curvePoints.value} L${CHART.w},${CHART.padTop + CHART.h} L0,${CHART.padTop + CHART.h} Z`
+)
+
+const gridLevels = [20, 40, 100, 300]
 
 const chartDot = computed(() => {
   const n = clampedCount.value
   const y = chartY(costPerUnit(n))
   const nearTop = y - 10 < 12
   return {
+    // Acima de 500 o gráfico não cobre — esconde o ponto para não marcar posição errada
+    visible: (propertyCount.value || 1) <= 500,
     x: chartX(n),
     y,
     labelX: Math.min(Math.max(chartX(n), 34), CHART.w - 34),
@@ -114,7 +133,7 @@ const chartDot = computed(() => {
             <input
               type="number"
               min="1"
-              max="1000"
+              :max="MAX_PROPERTIES"
               v-model.number="propertyCount"
               class="w-full px-4 py-3 border-0 rounded-lg text-lg font-semibold text-center text-gray-800 focus:ring-2 focus:outline-none"
             />
@@ -126,7 +145,7 @@ const chartDot = computed(() => {
                 aria-hidden="true"
               >
                 <!-- gridlines -->
-                <g v-for="v in [20, 40, 100, 400]" :key="v">
+                <g v-for="v in gridLevels" :key="v">
                   <line
                     x1="0" :x2="CHART.w"
                     :y1="chartY(v)" :y2="chartY(v)"
@@ -143,14 +162,16 @@ const chartDot = computed(() => {
                   fill="none" stroke="white" stroke-width="2"
                   stroke-linejoin="round" stroke-linecap="round"
                 />
-                <circle
-                  :cx="chartDot.x" :cy="chartDot.y" r="5"
-                  :fill="secondaryColor" :stroke="primaryColor" stroke-width="2"
-                />
-                <text
-                  :x="chartDot.labelX" :y="chartDot.labelY"
-                  fill="white" font-size="12" font-weight="bold" text-anchor="middle"
-                >R$ {{ perPropertyPrice }}</text>
+                <g v-if="chartDot.visible">
+                  <circle
+                    :cx="chartDot.x" :cy="chartDot.y" r="5"
+                    :fill="secondaryColor" :stroke="primaryColor" stroke-width="2"
+                  />
+                  <text
+                    :x="chartDot.labelX" :y="chartDot.labelY"
+                    fill="white" font-size="12" font-weight="bold" text-anchor="middle"
+                  >R$ {{ perPropertyPrice }}</text>
+                </g>
               </svg>
             </div>
             <input
@@ -193,7 +214,7 @@ const chartDot = computed(() => {
           </thead>
           <tbody>
             <tr
-              v-for="(plan, i) in pricingPlans"
+              v-for="(plan, i) in visiblePlans"
               :key="i"
               class="border-t border-gray-200 transition"
               :style="isCurrentPlan(plan) ? {
