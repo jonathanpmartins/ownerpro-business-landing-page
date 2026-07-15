@@ -52,7 +52,7 @@ const screenshots = [
             Organize o financeiro e a operação em um só lugar
           </h1>
 
-          <p class="text-lg opacity-80 mb-6">
+          <p class="text-lg opacity-90 mb-6">
             O sistema de gestão de aluguel por temporada feito por quem vive a operação na prática — financeiro, repasses e prestação de contas em um só lugar.
           </p>
 
@@ -89,7 +89,7 @@ const screenshots = [
           <div class="rounded-lg overflow-hidden shadow-2xl">
             <ImageCarousel
               :images="screenshots"
-            :eager="true"
+              :eager="true"
               :autoplay-interval="5000"
               :show-lightbox="true"
               :minimal="true"

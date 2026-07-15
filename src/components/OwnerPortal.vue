@@ -4,6 +4,7 @@ import ImageCarousel from './ImageCarousel.vue'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
+const darkenColor = inject('darkenColor')
 
 const portalFeatures = [
   { icon: '📊', title: 'Extrato de Repasses', desc: 'Visualização detalhada de todos os valores' },
@@ -24,9 +25,9 @@ const screenshots = [
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span 
+          <span
             class="text-sm font-semibold uppercase tracking-wider"
-            :style="{ color: secondaryColor }"
+            :style="{ color: darkenColor(secondaryColor, 30) }"
           >
             Portal do Proprietário
           </span>
@@ -46,7 +47,7 @@ const screenshots = [
             >
               <span class="text-2xl">{{ item.icon }}</span>
               <div>
-                <h4 class="font-semibold text-gray-800">{{ item.title }}</h4>
+                <h3 class="font-semibold text-gray-800">{{ item.title }}</h3>
                 <p class="text-gray-600 text-sm">{{ item.desc }}</p>
               </div>
             </div>

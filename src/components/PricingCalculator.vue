@@ -3,6 +3,7 @@ import { ref, computed, watch, inject } from 'vue'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
+const darkenColor = inject('darkenColor')
 
 const propertyCount = ref(30)
 
@@ -132,10 +133,11 @@ const chartDot = computed(() => {
       >
         <div class="flex flex-col md:flex-row gap-6 md:items-stretch">
           <div class="flex-1 w-full flex flex-col">
-            <label class="block text-sm opacity-80 mb-2">
+            <label for="property-count" class="block text-sm opacity-90 mb-2">
               Quantos imóveis você administra?
             </label>
             <input
+              id="property-count"
               type="number"
               min="1"
               :max="MAX_PROPERTIES"
@@ -143,7 +145,7 @@ const chartDot = computed(() => {
               class="w-full px-4 py-3 border-0 rounded-lg text-lg font-semibold text-center text-gray-800 focus:ring-2 focus:outline-none"
             />
             <div class="mt-4 flex-1 flex flex-col justify-center">
-              <p class="text-sm opacity-80 mb-2">Valor por imóvel conforme a quantidade</p>
+              <p class="text-sm opacity-90 mb-2">Valor por imóvel conforme a quantidade</p>
               <svg
                 :viewBox="`0 0 ${CHART.w} ${CHART.padTop + CHART.h + 4}`"
                 class="w-full block"
@@ -181,6 +183,7 @@ const chartDot = computed(() => {
             </div>
             <input
               type="range"
+              aria-label="Quantidade de imóveis"
               min="1"
               max="500"
               :value="Math.min(propertyCount, 500)"
@@ -190,16 +193,16 @@ const chartDot = computed(() => {
             />
           </div>
           <div class="flex-1 w-full flex flex-col">
-            <p class="text-sm opacity-80 mb-2 md:text-right">Como o cálculo é feito</p>
-            <div class="flex-1 bg-white/10 backdrop-blur rounded-lg p-6 text-center flex flex-col justify-center">
-              <p class="text-sm opacity-80 mb-1">Valor mensal</p>
-              <p class="text-sm opacity-80 mb-1">
+            <p class="text-sm opacity-90 mb-2 md:text-right">Como o cálculo é feito</p>
+            <div class="flex-1 bg-black/10 backdrop-blur rounded-lg p-6 text-center flex flex-col justify-center">
+              <p class="text-sm opacity-90 mb-1">Valor mensal</p>
+              <p class="text-sm opacity-90 mb-1">
                 R$ {{ currentPrice.fixed }} + ({{ propertyCount }} × R$ {{ currentPrice.perUnit }})
               </p>
               <p class="text-4xl font-bold mb-2">
                 R$ {{ formatNumber(currentPrice.total) }}
               </p>
-              <p class="text-sm opacity-80">
+              <p class="text-sm opacity-90">
                 <span class="font-bold">R$ {{ perPropertyPrice }}</span> por imóvel
               </p>
             </div>
@@ -243,7 +246,7 @@ const chartDot = computed(() => {
                 {{ plan.min }}–{{ plan.max }}
               </td>
               <td class="px-3 sm:px-6 py-4 font-semibold text-gray-800 text-center whitespace-nowrap">R$ {{ plan.fixed }}</td>
-              <td class="px-3 sm:px-6 py-4 font-semibold text-center whitespace-nowrap" :style="{ color: secondaryColor }">R$ {{ plan.perUnit }}</td>
+              <td class="px-3 sm:px-6 py-4 font-semibold text-center whitespace-nowrap" :style="{ color: darkenColor(secondaryColor, 30) }">R$ {{ plan.perUnit }}</td>
             </tr>
           </tbody>
         </table>

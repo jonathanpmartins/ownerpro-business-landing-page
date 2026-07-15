@@ -126,14 +126,16 @@ provide('darkenColor', darkenColor)
     </button>
 
     <Header />
-    <Hero />
-    <TargetAudience />
-    <ProblemSolution />
-    <Features />
-    <Differentials />
-    <OwnerPortal />
-    <PricingCalculator />
-    <CtaSection />
+    <main>
+      <Hero />
+      <TargetAudience />
+      <ProblemSolution />
+      <Features />
+      <Differentials />
+      <OwnerPortal />
+      <PricingCalculator />
+      <CtaSection />
+    </main>
     <FooterSection />
     <WhatsAppFab />
   </div>

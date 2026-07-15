@@ -161,41 +161,49 @@ onUnmounted(() => {
           <!-- Dots Indicator (overlay when minimal) -->
           <div
             v-if="images.length > 1 && minimal"
-            class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 px-3 py-1.5 rounded-full bg-black/30"
+            class="absolute bottom-3 left-1/2 -translate-x-1/2 flex px-2 py-0.5 rounded-full bg-black/30"
           >
             <button
               v-for="(_, index) in images"
               :key="index"
               @click="goToSlide(index)"
               :aria-label="`Ir para slide ${index + 1}`"
-              class="h-2 rounded-full transition-all"
-              :class="currentSlide === index ? 'w-6' : 'w-2'"
-              :style="{
-                backgroundColor: currentSlide === index
-                  ? (dotColor || '#fff')
-                  : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.5)')
-              }"
-            />
+              class="p-2"
+            >
+              <span
+                class="block h-2 rounded-full transition-all"
+                :class="currentSlide === index ? 'w-6' : 'w-2'"
+                :style="{
+                  backgroundColor: currentSlide === index
+                    ? (dotColor || '#fff')
+                    : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.5)')
+                }"
+              />
+            </button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Dots Indicator (below carousel when not minimal) -->
-    <div v-if="images.length > 1 && !minimal" class="flex justify-center gap-2 mt-3 px-3 py-1.5 rounded-full bg-black/30 w-fit mx-auto">
+    <div v-if="images.length > 1 && !minimal" class="flex justify-center mt-3 px-2 py-0.5 rounded-full bg-black/30 w-fit mx-auto">
       <button
         v-for="(_, index) in images"
         :key="index"
         @click="goToSlide(index)"
         :aria-label="`Ir para slide ${index + 1}`"
-        class="h-2 rounded-full transition-all"
-        :class="currentSlide === index ? 'w-6' : 'w-2'"
-        :style="{
-          backgroundColor: currentSlide === index
-            ? (dotColor || borderColor || '#fff')
-            : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.4)')
-        }"
-      />
+        class="p-2"
+      >
+        <span
+          class="block h-2 rounded-full transition-all"
+          :class="currentSlide === index ? 'w-6' : 'w-2'"
+          :style="{
+            backgroundColor: currentSlide === index
+              ? (dotColor || borderColor || '#fff')
+              : (dotColor ? dotColor + '50' : 'rgba(255,255,255,0.4)')
+          }"
+        />
+      </button>
     </div>
 
     <!-- Lightbox Modal -->

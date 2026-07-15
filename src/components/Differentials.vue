@@ -20,7 +20,7 @@ const differentials = [
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-white mb-4">Por que o OwnerPro Business?</h2>
-        <p class="text-white/80 max-w-2xl mx-auto">
+        <p class="text-white/90 max-w-2xl mx-auto">
           Mais do que um software, é um processo de organização e amadurecimento da sua operação.
         </p>
       </div>
@@ -29,11 +29,11 @@ const differentials = [
         <div
           v-for="(item, i) in differentials"
           :key="i"
-          class="bg-white/10 backdrop-blur rounded-lg p-6 text-center text-white"
+          class="bg-black/10 backdrop-blur rounded-lg p-6 text-center text-white"
         >
           <span class="text-4xl mb-4 block">{{ item.icon }}</span>
           <h3 class="font-semibold mb-2">{{ item.title }}</h3>
-          <p class="text-sm opacity-80">{{ item.desc }}</p>
+          <p class="text-sm opacity-90">{{ item.desc }}</p>
         </div>
       </div>
     </div>

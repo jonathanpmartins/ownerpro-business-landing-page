@@ -22,6 +22,7 @@ const primaryColor = inject('primaryColor')
         href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20falar%20com%20um%20consultor%20OwnerPro%20Business."
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Fale conosco no WhatsApp"
         class="header-cta inline-flex items-center gap-2 text-white px-5 py-2.5 rounded font-medium transition shadow-sm hover:shadow-md"
         :style="{ backgroundColor: primaryColor }"
       >
