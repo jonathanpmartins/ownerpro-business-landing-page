@@ -80,8 +80,10 @@ provide('accentOnPrimary', accentOnPrimary)
 provide('iconBoxColor', iconBoxColor)
 
 // Controle do color picker - ativado via ?colors=view na URL
-const urlParams = new URLSearchParams(window.location.search)
-const showColorPicker = ref(urlParams.get('colors') === 'view')
+// (guard de window: no build o vite-ssg renderiza sem browser)
+const colorsView = typeof window !== 'undefined' &&
+  new URLSearchParams(window.location.search).get('colors') === 'view'
+const showColorPicker = ref(colorsView)
 
 // Função para escurecer cor
 const darkenColor = (hex, percent) => {
@@ -115,7 +117,7 @@ provide('darkenColor', darkenColor)
     />
 
     <button
-      v-if="!showColorPicker && urlParams.get('colors') === 'view'"
+      v-if="!showColorPicker && colorsView"
       @click="showColorPicker = true"
       class="fixed top-4 right-4 z-50 bg-white rounded-full shadow-lg p-3 hover:shadow-xl transition border border-gray-200"
       title="Abrir seletor de cores"
