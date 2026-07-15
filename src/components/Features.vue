@@ -4,6 +4,7 @@ import { inject } from 'vue'
 const primaryColor = inject('primaryColor')
 const tagColor = inject('tagColor')
 const iconBoxColor = inject('iconBoxColor')
+const darkenColor = inject('darkenColor')
 
 const features = [
   {
@@ -77,10 +78,11 @@ const features = [
                 <span
                   v-for="(tag, j) in feature.highlights"
                   :key="j"
-                  class="text-xs px-2 py-1 rounded-full"
+                  class="text-xs font-medium px-2.5 py-1 rounded-full"
                   :style="{
                     backgroundColor: tagColor.bg,
-                    color: tagColor.text
+                    color: darkenColor(tagColor.text, 12),
+                    border: `1px solid ${tagColor.text}26`
                   }"
                 >
                   {{ tag }}
