@@ -10,6 +10,7 @@ import OwnerPortal from './components/OwnerPortal.vue'
 import PricingCalculator from './components/PricingCalculator.vue'
 import CtaSection from './components/CtaSection.vue'
 import FooterSection from './components/FooterSection.vue'
+import WhatsAppFab from './components/WhatsAppFab.vue'
 import ColorPicker from './components/ColorPicker.vue'
 
 // Cores do tema - Coastal Calm
@@ -132,5 +133,6 @@ provide('darkenColor', darkenColor)
     <PricingCalculator />
     <CtaSection />
     <FooterSection />
+    <WhatsAppFab />
   </div>
 </template>

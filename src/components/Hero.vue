@@ -29,6 +29,7 @@ const screenshots = [
 
 <template>
   <section
+    data-fab-hero
     class="text-white"
     :style="gradientStyle"
   >

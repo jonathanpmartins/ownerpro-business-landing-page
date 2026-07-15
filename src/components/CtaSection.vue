@@ -11,6 +11,7 @@ const gradientStyle = computed(() => ({
 
 <template>
   <section
+    data-fab-cta
     class="py-20 text-white"
     :style="gradientStyle"
   >
