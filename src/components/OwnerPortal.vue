@@ -30,7 +30,7 @@ const screenshots = [
           >
             Portal do Proprietário
           </span>
-          <h2 class="text-3xl font-bold text-gray-800 mt-2 mb-6">
+          <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mt-2 mb-6">
             Prestação de contas profissional
           </h2>
           <p class="text-gray-600 mb-8">

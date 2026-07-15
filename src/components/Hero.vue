@@ -47,7 +47,7 @@ const screenshots = [
             Sistema de aluguel por temporada
           </div>
 
-          <h1 class="text-4xl lg:text-4xl font-bold leading-tight mb-6">
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-6">
             Organize o financeiro e a operação em um só lugar
           </h1>
 

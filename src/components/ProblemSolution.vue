@@ -18,7 +18,7 @@ const transformations = [
   <section class="py-16 bg-gray-50">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-4">
           Você conhece esses problemas?
         </h2>
         <p class="text-gray-600">

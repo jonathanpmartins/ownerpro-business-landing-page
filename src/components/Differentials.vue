@@ -19,7 +19,7 @@ const differentials = [
   >
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-white mb-4">Por que o OwnerPro Business?</h2>
+        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-white mb-4">Por que o OwnerPro Business?</h2>
         <p class="text-white/80 max-w-2xl mx-auto">
           Mais do que um software, é um processo de organização e amadurecimento da sua operação.
         </p>

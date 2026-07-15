@@ -15,7 +15,7 @@ const gradientStyle = computed(() => ({
     :style="gradientStyle"
   >
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">
+      <h2 class="text-3xl md:text-4xl tracking-tight font-bold mb-4">
         Pronto para organizar sua operação?
       </h2>
       <p class="text-lg opacity-90 mb-8">

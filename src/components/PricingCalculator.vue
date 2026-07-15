@@ -119,7 +119,7 @@ const chartDot = computed(() => {
   <section id="precos" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Investimento</h2>
+        <h2 class="text-3xl md:text-4xl tracking-tight font-bold text-gray-800 mb-4">Investimento</h2>
         <p class="text-gray-600">
           Preços que acompanham o crescimento da sua operação
         </p>
