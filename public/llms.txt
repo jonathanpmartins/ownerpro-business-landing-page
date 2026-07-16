@@ -1,0 +1,31 @@
+# OwnerPro Business
+
+> Sistema de gestão financeira e operacional para administradoras e gestores de imóveis de aluguel por temporada no Brasil. Centraliza repasses a proprietários, prestação de contas, reservas, check-in/check-out, limpeza, manutenções e relatórios.
+
+## O que é
+
+OwnerPro Business é um software (aplicação web) para quem administra carteiras de imóveis de temporada — de 1 a 10.000 unidades. Foco em organização financeira: fluxo de caixa, DRE, contas a pagar/receber, cálculo estruturado de repasses com regras por contrato e portal do proprietário com extratos e calendário de reservas. Integra com channel managers para importar reservas de plataformas como Airbnb e Booking.
+
+## Preços
+
+Mensalidade graduada e contínua (sem salto ao trocar de faixa): valor fixo por faixa mais tarifa por imóvel.
+
+- 1–20 imóveis: R$ 290 fixo + R$ 17 por imóvel
+- 21–50: R$ 390 + R$ 12
+- 51–100: R$ 490 + R$ 10
+- 101–200: R$ 590 + R$ 9
+- 201–500: R$ 790 + R$ 8
+- Acima de 500: faixas maiores disponíveis na calculadora do site
+
+Exemplo: 30 imóveis = R$ 390 + (30 × R$ 12) = R$ 750/mês. Implantação cobrada à parte.
+
+## Contato
+
+- Site: https://business.ownerpro.com.br
+- WhatsApp: +55 54 99186-4582
+- Localização: Gramado, RS, Brasil
+- Idioma: português (pt-BR)
+
+## Páginas
+
+- [Página principal](https://business.ownerpro.com.br/): funcionalidades, diferenciais, calculadora de preços e contato
