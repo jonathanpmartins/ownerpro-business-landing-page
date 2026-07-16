@@ -1,6 +1,7 @@
 <script setup>
 import { inject } from 'vue'
 import Logo from './Logo.vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 const primaryColor = inject('primaryColor')
 </script>
@@ -23,6 +24,7 @@ const primaryColor = inject('primaryColor')
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale conosco no WhatsApp"
+        @click="trackEvent('whatsapp_click', { location: 'header' })"
         class="header-cta inline-flex items-center gap-2 text-white px-5 py-2.5 rounded font-medium transition shadow-sm hover:shadow-md"
         :style="{ backgroundColor: primaryColor }"
       >

@@ -1,6 +1,7 @@
 <script setup>
 import { inject, computed } from 'vue'
 import Logo from './Logo.vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 const primaryColor = inject('primaryColor')
 const darkenColor = inject('darkenColor')
@@ -23,6 +24,7 @@ const footerBg = computed(() => darkenColor(primaryColor.value, 40))
             href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20OwnerPro%20Business."
             target="_blank"
             rel="noopener noreferrer"
+            @click="trackEvent('whatsapp_click', { location: 'footer' })"
             class="inline-flex items-center gap-2 hover:text-white transition underline underline-offset-4 decoration-gray-500"
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

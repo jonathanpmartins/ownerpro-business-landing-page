@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, watch, inject } from 'vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
@@ -29,6 +30,18 @@ const planFor = (count) =>
 
 watch(propertyCount, (v) => {
   if (v > MAX_PROPERTIES) propertyCount.value = MAX_PROPERTIES
+})
+
+// Uso da calculadora: debounce pra não disparar evento a cada tick do slider
+let calcTimer = null
+watch(propertyCount, () => {
+  clearTimeout(calcTimer)
+  calcTimer = setTimeout(() => {
+    trackEvent('calculate_price', {
+      property_count: propertyCount.value || 1,
+      monthly_total: currentPrice.value.total
+    })
+  }, 1500)
 })
 
 const currentPrice = computed(() => {
@@ -210,6 +223,11 @@ const chartDot = computed(() => {
               :href="whatsappLink"
               target="_blank"
               rel="noopener noreferrer"
+              @click="trackEvent('whatsapp_click', {
+                location: 'pricing_calculator',
+                property_count: propertyCount || 1,
+                monthly_total: currentPrice.total
+              })"
               class="mt-4 inline-flex items-center justify-center gap-2 bg-white px-6 py-3 rounded font-semibold transition shadow-lg hover:shadow-xl"
               :style="{ color: primaryColor }"
             >

@@ -1,6 +1,7 @@
 <script setup>
 import { inject, computed } from 'vue'
 import ImageCarousel from './ImageCarousel.vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 const primaryColor = inject('primaryColor')
 const secondaryColor = inject('secondaryColor')
@@ -73,6 +74,7 @@ const screenshots = [
               href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20conhecer%20o%20OwnerPro%20Business."
               target="_blank"
               rel="noopener noreferrer"
+              @click="trackEvent('whatsapp_click', { location: 'hero' })"
               class="inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded font-semibold transition shadow-lg hover:shadow-xl"
               :style="{ color: primaryColor }"
             >

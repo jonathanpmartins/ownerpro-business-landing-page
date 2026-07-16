@@ -1,5 +1,6 @@
 <script setup>
 import { inject, computed } from 'vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 const primaryColor = inject('primaryColor')
 const darkenColor = inject('darkenColor')
@@ -27,6 +28,7 @@ const gradientStyle = computed(() => ({
         href="https://wa.me/5554991864582?text=Ol%C3%A1!%20Quero%20contratar%20o%20OwnerPro%20Business."
         target="_blank"
         rel="noopener noreferrer"
+        @click="trackEvent('whatsapp_click', { location: 'cta_final' })"
         class="inline-flex items-center justify-center gap-2 bg-white px-8 py-4 rounded font-semibold shadow-lg hover:shadow-xl transition text-[#0E7166]"
       >
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

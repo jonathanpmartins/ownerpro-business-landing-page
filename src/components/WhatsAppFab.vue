@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { trackEvent } from '../composables/useAnalytics'
 
 // Aparece depois do hero (que já tem CTA) e some quando o CTA final entra na tela
 const visible = ref(false)
@@ -37,6 +38,7 @@ onUnmounted(() => {
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Falar com a OwnerPro no WhatsApp"
+    @click="trackEvent('whatsapp_click', { location: 'fab' })"
     class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 motion-reduce:transition-none"
     :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'"
   >
